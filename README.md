@@ -9,3 +9,7 @@ A synth pad progressive web app using ToneJS. Code-along for class.
 * [ ] add a web manifest (is installable)
 * [ ] add a service worker (works offline)
 * [ ] use indexedDB to save settings
+
+## Thank-you's
+
+Images by TyboMakes + Midjourney.
