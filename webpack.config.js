@@ -13,6 +13,12 @@ module.exports = {
         filename: 'index.bundle.js',
         publicPath: '',
     },
+    devServer: {
+        hot: true
+    },
+    performance: {
+        hints: false
+    },
     module: {
         rules: [
           {

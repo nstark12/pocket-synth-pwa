@@ -4,6 +4,7 @@
   "description": "A synth pad progressive web app using ToneJS. Code-along for class.",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack serve --open",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +21,7 @@
     "mini-css-extract-plugin": "^2.7.6",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
     "webpack-pwa-manifest": "^4.3.0",
     "workbox-webpack-plugin": "^7.0.0"
   }
