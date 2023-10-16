@@ -5,7 +5,7 @@ export class Pad {
     yPosition = 0.5
     pressed = false
 
-    constructor() {
+    constructor(onPadEngageCb, onPadDisengageCb, onPuckMoveCb) {
         this.pad = document.getElementById('pad')
         this.puck = document.getElementById('puck')
         this.setPuckStyle()
@@ -14,6 +14,10 @@ export class Pad {
         this.pad.addEventListener('mousedown', this.handleMousedown.bind(this))
         this.pad.addEventListener('mouseup', this.handleMouseup.bind(this))
         this.pad.addEventListener('mouseleave', this.handleMouseLeave.bind(this))
+        // add callbacks
+        this.onPadEngageCb = onPadEngageCb
+        this.onPadDisengageCb = onPadDisengageCb
+        this.onPuckMoveCb = onPuckMoveCb
     }
 
     handleMouseMove(e) {
@@ -25,15 +29,39 @@ export class Pad {
     handleMousedown(e) {
         this.updatePuckPosition(e)
         this.pressed = true
+
+        if (this.onPadEngageCb) {
+            this.onPadEngageCb({
+                x: this.xPosition,
+                y: this.yPosition,
+                pressed: this.pressed
+            })
+        }
     }
 
     handleMouseup(e) {
         this.updatePuckPosition(e)
         this.pressed = false
+
+        if (this.onPadDisengageCb) {
+            this.onPadDisengageCb({
+                x: this.xPosition,
+                y: this.yPosition,
+                pressed: this.pressed
+            })
+        }
     }
 
     handleMouseLeave(e) {
         this.pressed = false
+
+        if (this.onPadDisengageCb) {
+            this.onPadDisengageCb({
+                x: this.xPosition,
+                y: this.yPosition,
+                pressed: this.pressed
+            })
+        }
     }
 
     updatePuckPosition(e) {
