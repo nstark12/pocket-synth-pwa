@@ -68,6 +68,13 @@ export class Pad {
         this.xPosition = this.clamp(e.offsetX / this.pad.offsetWidth)
         this.yPosition = this.clamp(e.offsetY / this.pad.offsetHeight)
         this.setPuckStyle()
+        if (this.onPuckMoveCb) {
+            this.onPuckMoveCb({
+                x: this.xPosition,
+                y: this.yPosition,
+                pressed: this.pressed
+            })
+        }
     }
 
     clamp(val) {

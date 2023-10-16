@@ -1,7 +1,14 @@
 import '../css/styles.css'
+import { PocketSynth } from './synth'
 import { Pad } from './pad'
 
-const pad = new Pad()
+const pocketSynth = new PocketSynth()
+
+new Pad(
+    data => pocketSynth.triggerAttack(data),
+    () => pocketSynth.triggerRelease(),
+    data => pocketSynth.moveNote(data)
+    )
 
 
 
